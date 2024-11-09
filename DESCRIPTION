@@ -1,0 +1,30 @@
+Package: spotify.discovery
+Title: Discover more about your Spotify listening
+Version: 0.0.0.1
+Authors@R: c( 
+    person("Sarah", "Branch", , "sbranch58@smith.edu", role = c("aut")),
+    person("Noa", "Gittelman-Egan", , "ngittelmanegan@smith.edu", role = c("aut")),
+    person("Sophia", "Silovsky", , "ssilovsky@smith.edu", role = c("aut", "cre")),
+    person("Tulip", "Daaboul", , "tdaaboul@smith.edu", role = c("aut"))
+    )
+Description: The spotify.discovery package workings in conjunction with Spotify's
+    API to allow Spotify users to access music metric information and offers 
+    hyper-personalized playlist manipulation functions that are unavailable to 
+    the user via the base Spotify interface.
+License: GPL (>= 3)
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.2.3
+Suggests: 
+    knitr,
+    rmarkdown,
+    testthat (>= 3.0.0),
+    dplyr,
+    spotifyr,
+    tibble,
+    tidyr
+VignetteBuilder: knitr
+Config/testthat/edition: 3
+Depends: 
+    R (>= 2.10)
+LazyData: true

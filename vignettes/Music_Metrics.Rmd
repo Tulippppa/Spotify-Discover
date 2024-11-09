@@ -1,0 +1,151 @@
+---
+title: "Music_Metrics"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Music_Metrics}
+  %\VignetteEncoding{UTF-8}
+  %\VignetteEngine{knitr::rmarkdown}
+editor_options: 
+  markdown: 
+    wrap: 72
+---
+
+**Music Audio Features:**
+
+In functions such as max_metrics_summary, min_metrics_summary,
+playlist_averages, and shuffled_playlist there are certain features that
+can be confusing to those not familiar with musicality.
+
+-   Acousticness
+
+    -   Refers to the confidence that a track is acoustic
+        -   It is a scale of confidence from 0 to 1
+
+        -   A score of 1 refers to a track with a high likelihood of
+            being acoustic
+
+-   Liveness
+
+    -   Refers to the probability that a track was recorded live
+    -   A confidence scale from 0 to 1
+        -   A value above 0.8 represents a high probability that the
+            track was recorded live
+
+-   Speechiness - Refers to the presence of spoken words in a song
+
+    -   This value is on a scale of 0 to 1
+    -   A score of 0 refers to a track with no words, and a score of 1
+        refers to a track with only words
+        -   Songs with a speechiness score between 0.33 and 0.66 contain
+
+            both music and speech
+
+        -   Songs with a speechiness score below 0.33 could be
+
+            instrumental songs
+
+    -   The higher to value, the more words the track contains
+
+-   Instrumentalness
+
+    -   Refers to the lack of presence of vocals in a song
+
+    -   Ascale of confidence from 0 to 1
+
+        -   A score of 1 refers to a track with a high likelihood of
+            containing no vocals
+
+        -   Any value above 0.5 is considered an instrumental track
+
+-   Energy
+
+    -   Refers to the amount of energy, intensity, and activity of a
+        track
+
+    -   A value on a scale of 0 to 1
+
+        -   A score of 0 refers to a track with low energy, and a score
+            of 1 refers to a track with high energy
+
+-   Loudness
+
+    -   Refers to the loudness of a track in decibels (dB)
+
+    -   This value generally is on a scale of -60 to 0 dB
+
+    -   The quality of a sound
+
+        -   The higher the value, the lower the quality of sound
+
+        -   For more information on decibels, visit
+            [here](https://www.scienceabc.com/pure-sciences/why-negative-decibels-are-a-thing.html)
+
+-   Danceability
+
+    -   Refers to how "danceable" a track is
+
+    -   This value is on a scale of 0 to 1.
+
+        -   A score of 0 refers to a track with no danceable features,
+            and a score of 1 refers to a perfect danceable track.
+
+    -   Think of this value as a percentage of how danceable a track is
+
+        -   So for example, if a track has a danceability score of 0.35,
+            the track is about 35% danceable.
+
+-   Valence
+
+    -   Refers to how positive a track sounds
+
+    -   This value is on a scale of 0 to 1.
+
+        -   A score of 0 refers to a track with no valence or
+            positivity, and a score of 1 refers to a completely valent
+            or positive track
+
+    -   Think of this value as a percentage of how positive a track is
+
+        -   So for example, if a track has a valence score of 0.35, the
+            track is about 35% positive
+
+-   Duration
+
+    -   refers to how long the track lasts in milliseconds
+
+-   Tempo
+
+    -   Refers to how many beats per minute a track has
+
+    -   Think of it as the heart rate of the song, or the beat that you
+        tap your foot to
+
+        -   The higher the tempo, the faster the BPM
+
+-   Key
+
+    -   The musical scale the track is in
+
+    -   The key a song is in could influence whether a track sounds
+        happy, angry, stressful, or sad
+
+    -   To learn more about keys visit
+        [here](https://www.musicca.com/keys)
+
+    -   This value is on a scale of -1 to 11, each number representing a
+        different key
+
+    -   The possible keys are C, C#/Db, D, D#/Eb, E, F, F#/Gb, G, G#/Ab,
+        A, A#/Bb, and B. C = 0, C#/Db = 1, and so on
+
+        -   A value of -1 means no key was detected.
+
+-   Mode
+
+    -   A binary value which refers to whether a track key is in a major
+        or minor scale
+
+        -   Major is represented by a 1 and minor is represented by a 0
+
+        -   Major scales generally sound more positive, while minor
+            scales generally sound more negative

@@ -1,0 +1,49 @@
+---
+title: "api_token"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{api_token}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(spotify.discovery)
+```
+
+**Required.** Users must call this function in order to obtain an access token object required for the `spotifyr` package. Without an access token, the user will be unable to engage with the package. 
+
+To obtain an access token, the user must run `api_token()` to call on Spotify’s API. Once the function is called, the user should look at Spotify's Web API website | Spotify for Developers (https://developer.spotify.com/documentation/web-api) via their search engine and will need to go through the SpotifyAPI’s process to obtain an access token. 
+
+Once the access token is obtained, the user will be able to interact with all functions of the `spotify-discovery` package
+
+**Instruction to Create API Token**
+
+Creating an API token may seem daunting, but actually is quite easy with proper instructions. 
+
+1. First you find your Spotify username and password, or you can make a Spotify account for free. To fully use the package, it’d be best to listen to music for at least a week, so Spotify can create a Discover Weekly playlist. However, you can also just use our playlist functions for whatever playlist you like. 
+
+2. After acquiring your Spotify username and password, go to the Spotify developer page. Here you will create your app and receive your unique Client ID and Client Secret. 
+
+3. Now you can install our package using `install.package(“spotify-discovery”)`. Then create a data object that will be your access token to all of our functions. 
+
+`access_token <- api_token(‘YOUR CLIENT ID’, ‘YOUR CLIENT SECRET’)`
+
+Now whenever you utilize one of our functions, place your access token in the function parameter inputs. 
+
+**Notes**
+
+Please note, you must reload your access token every hour in order for it to be valid. 
+
+If the token expires, user will be prompted with message "access key expires in one hour - to renew please rerun this function"
+
+To rerun function input: `access_token <- api_token(‘YOUR CLIENT ID’, ‘YOUR CLIENT SECRET’)` into the console
+
+

@@ -1,0 +1,321 @@
+---
+title: "Function_Descriptions"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Function_Descriptions}
+  %\VignetteEncoding{UTF-8}
+  %\VignetteEngine{knitr::rmarkdown}
+editor_options: 
+  markdown: 
+    wrap: 72
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(spotify.discovery)
+```
+
+**shuffle_function(username, uri, access_token, ...):**
+
+The purpose of this function is so when listeners do not know what songs
+to play, they can have a shuffled playlist from their Spotify Discover
+Weekly! Users can provide their spotify username, URI, access token they
+have created, and as well as any information they want to learn about
+the songs. As of right now, the function outputs a dataframe with three
+columns: "track.name", "track.album.name", and "track.preview_url".
+These are only the defaults and if the user wants other information
+about the songs such as music metrics, they can look at the options
+provided below and add it as a parameter. Similarly, if you don't want
+one of the default options, you can add "-"(parameter name).
+
+The full list of options is:
+
+-   "playlist_id"
+
+-   "playlist_name"
+
+-   "playlist_img"
+
+-   "playlist_owner_name"
+
+-   "playlist_owner_id"
+
+-   "danceability"
+
+-   "energy"
+
+-   "key"
+
+-   "loudness"
+
+-   "mode"
+
+-   "speechiness"
+
+-   "acousticness"
+
+-   "instrumentalness"
+
+-   "liveness"
+
+-   "valence"
+
+-   "tempo"
+
+-   "track.id"
+
+-   "analysis_url"
+
+-   "time_signature"
+
+-   "added_at"
+
+-   "is_local"
+
+-   "primary_color"
+
+-   "added_by.href"
+
+-   "added_by.id"
+
+-   "added_by.type"
+
+-   "added_by.uri"
+
+-   "added_by.external_urls.spotify"
+
+-   "track.artists"
+
+-   "track.available_markets"
+
+-   "track.disc_number"
+
+-   "track.duration_ms"
+
+-   "track.episode"
+
+-   "track.explicit"
+
+-   "track.href"
+
+-   "track.is_local"
+
+-   "track.name"
+
+-   "track.popularity"
+
+-   "track.preview_url"
+
+-   "track.track"
+
+-   "track.track_number"
+
+-   "track.type"
+
+-   "track.uri"
+
+-   "track.album.album_group"
+
+-   "track.album.album_type"
+
+-   "track.album.artists"
+
+-   "track.album.available_markets"
+
+-   "track.album.href"
+
+-   "track.album.id"
+
+-   "track.album.images"
+
+-   "track.album.name"
+
+-   "track.album.release_date"
+
+-   "track.album.release_date_precision"
+
+-   "track.album.total_tracks"
+
+-   "track.album.type"
+
+-   "track.album.uri"
+
+-   "track.album.external_urls.spotify"
+
+-   "track.external_ids.isrc"
+
+-   "track.external_urls.spotify"
+
+-   "video_thumbnail.url"
+
+-   "key_name"
+
+-   "mode_name"
+
+-   "key_mode"
+
+`shuffled_playlist('spotify', c('37i9dQZEVXbLRQDuF5jeBp'), access_token)`
+
+```{r, echo = FALSE}
+shuffled_playlist(test = TRUE) |>
+  head(n=10)
+```
+
+**max_metric_summary(username, uri, access_token, max_or_min, ...)** :
+
+User can provide a playlist via the get_playlist_audio_features()
+function from the spotifyr package to produce a dataframe that includes
+all audio metrics documented by spotify. The user may identify which
+music metric to measure (Danceability, tempo, duration, etc.) and run
+this function to produce a dataframe that documents the music metric,
+the numeric value of the audio feature, and the title of the song
+associated with that maximum value. This function works in conjunction
+with the **min_metric_summary** function.
+
+`max_metric_summary('spotify', c('37i9dQZEVXbLRQDuF5jeBp'), access_token)`
+
+```{r, echo = FALSE}
+max_metrics_summary(test = TRUE) |>
+  head(n=10)
+```
+
+**min_metric_summary(username, uri, access_token, max_or_min, ...)** :
+
+User can provide a playlist via the get_playlist_audio_features()
+function from the spotifyr package to produce a dataframe that includes
+all audio metrics documented by spotify. The user may identify which
+music metric to measure (Danceability, tempo, duration, etc.) and run
+this function to produce a dataframe that documents the music metric,
+the numeric value of the audio feature, and the title of the song
+associated with that minimum value. This function works in conjunction
+with the **max_metric_summary** function. 
+
+`min_metric_summary('spotify', c('37i9dQZEVXbLRQDuF5jeBp'), access_token)`
+
+```{r, echo = FALSE}
+min_metrics_summary(test = TRUE)
+```
+
+**genre_recommendations(uri, access_token)**:
+
+User can provide a playlist and access token and it returns data frame
+columns that represent the genre, and the rows represent the artist
+name. The data frame shows similar artists and their genre based on the
+user's inputted artist genre. Note: you may see the same artist you
+inputted in the dataframe. This is because the artist you inputted is
+already in the top 20 artists of that genre. You will still have 19 new
+artists to listen to.
+
+`genre_recommendations('spotify', c('37i9dQZEVXbLRQDuF5jeBp'), access_token)`
+
+```{r, echo=FALSE}
+genre_recommendations(test = TRUE) |>
+  head(n=10)
+```
+
+**playlist_averages(username, uri, access_token, ...)**:
+
+User can provide a playlist and access token and it returns a data frame
+that shows the averages of the music metrics. The defaults for this are
+'danceability', 'energy', 'speechiness', 'acousticness',
+'instrumentalness', 'liveness', 'valence', 'tempo', and 'loudness'. The
+user can add the metrics 'key', 'time_signature', 'track.duration_ms',
+'track.popularity' using the "..." feature. Similarly, if you don't want
+one of the default metrics, you can use "-(music metric)"
+
+`playlist_averages('spotify', c('37i9dQZEVXbLRQDuF5jeBp'), access_token)`
+
+```{r, echo=FALSE}
+playlist_averages(test = TRUE) |>
+  head(n=10)
+```
+
+**genre_playlist_recommendations(playlist, access_token)**
+
+Users can provide a playlist URI and then receive 20 artist
+recommendations based on the artist's genre in the playlist. Takes the
+playlist URI and access token as input, and outputs a dataframe.
+
+**Note:** You may see the same artist you inputted in the dataframe.
+This is because the artist you inputted is already in the top 20 artists
+of that genre. You will still have 19 new artists to listen to.
+
+`genre_playlist_recommendations('37i9dQZF1EIVoBl2iylPUR', access_token)`
+
+```{r, echo=FALSE}
+genre_playlist_recommendations(test = TRUE) |>
+  head(n=10)
+```
+
+**ranking_function(playlist, access_token, sort_by="track.name")**
+
+Users can re-order their playlists based on an element of their choosing
+in ascending order as the default, with the given constraint that it has
+to be within a column provided by the get_playlist_tracks() function in
+the spotifyr package since it was the function used to build
+ranking_function().
+
+The columns users can rank by are include:
+
+-   "added_at"
+-   "is_local"
+-   "added_by.href"
+-   "added_by.id"
+-   "added_by.type"
+-   "added_by.uri"
+-   "added_by.external_urls.spotify"
+-   "track.artists"
+-   "track.available_markets"
+-   "track.disc_number"
+-   "track.duration_ms"
+-   "track.episode"
+-   "track.explicit"
+-   "track.href"
+-   "track.id"
+-   "track.is_local"
+-   "track.name"
+-   "track.popularity"
+-   "track.preview_url"
+-   "track.track"
+-   "track.track_number"
+-   "track.type"
+-   "track.uri"
+-   "track.album.album_group"
+-   "track.album.album_type"
+-   "track.album.available_markets"
+-   "track.album.href"
+-   "track.album.id"
+-   "track.album.name"
+-   "track.album.release_date"
+-   "track.album.release_date_precision"
+-   "track.album.total_tracks"
+-   "track.album.type"
+-   "track.album.uri"
+-   "track.album.external_urls.spotify"
+-   "track.external_ids.isrc"
+-   "track.external_urls.spotify"
+-   "video_thumbnail.url"
+
+**Note:** There are some columns such as "track.album.images" that are
+dataframes within the dataframe, so we recommend you avoid those since
+they will cause an error since the function currently can't index within
+them, and you will be set back to the default of "track.name" if you try
+to use these elements. There are also columns full of NA values that if
+you try to rank them, it will not change the output of the dataframe.
+
+**Note:** While you can technically you can rank by
+"video_thumbnail.url", it will not provide you with a useful ordered
+list so make sure you pay attention to what you sort by.
+
+`ranking_function('37i9dQZF1EIVoBl2iylPUR', access_token, sort_by = 'track.duration_ms', order = 'ascending')`
+
+```{r, echo=FALSE}
+ranking_function(test = TRUE) |>
+  head(n=10)
+```
